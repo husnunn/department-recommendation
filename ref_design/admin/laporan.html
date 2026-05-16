@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Laporan Sistem - MajorRecommend Admin</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-container": "#dad7ff",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-primary": "#c3c0ff",
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#4f46e5",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary-container": "#ffd4a4",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-tint": "#4d44e3",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#006c49",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#464555",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "outline": "#777587",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed": "#0f0069",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "inverse-surface": "#213145",
+                        "primary": "#3525cd",
+                        "tertiary-container": "#885500",
+                        "tertiary": "#684000",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "1rem",
+                        "xl": "2rem",
+                        "base": "4px",
+                        "sm": "0.5rem",
+                        "lg": "1.5rem",
+                        "margin-desktop": "2.5rem",
+                        "gutter": "1.5rem",
+                        "2xl": "3rem",
+                        "margin-mobile": "1rem",
+                        "xs": "0.25rem"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen">
+    <!-- SideNavBar -->
+    <nav
+        class="w-[280px] h-screen fixed left-0 top-0 shadow-sm bg-surface-container-lowest dark:bg-surface-dim z-20 flex flex-col py-md overflow-y-auto border-r border-outline-variant">
+        <div class="px-md pb-lg mb-md border-b border-outline-variant">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+                <div>
+                    <h1 class="font-title-lg text-title-lg font-bold text-primary dark:text-primary-fixed">
+                        MajorRecommend</h1>
+                    <p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+                </div>
+            </div>
+        </div>
+        <ul class="flex flex-col gap-xs px-sm">
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-title-md text-title-md">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">school</span>
+                    <span class="font-title-md text-title-md">Jurusan Kuliah</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">psychology</span>
+                    <span class="font-title-md text-title-md">Kriteria Minat &amp; Bakat</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">quiz</span>
+                    <span class="font-title-md text-title-md">Pertanyaan Kuesioner</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">book</span>
+                    <span class="font-title-md text-title-md">Mata Pelajaran</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">group</span>
+                    <span class="font-title-md text-title-md">Data Siswa</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">database</span>
+                    <span class="font-title-md text-title-md">Dataset Training</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">model_training</span>
+                    <span class="font-title-md text-title-md">Training Model</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">smart_toy</span>
+                    <span class="font-title-md text-title-md">Model ML</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">history_edu</span>
+                    <span class="font-title-md text-title-md">Log Training</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">rule</span>
+                    <span class="font-title-md text-title-md">Hasil Rekomendasi</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-primary dark:text-primary-fixed-dim font-bold border-r-4 border-primary hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98] bg-surface-container-low"
+                    href="#">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assessment</span>
+                    <span class="font-title-md text-title-md">Laporan</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">admin_panel_settings</span>
+                    <span class="font-title-md text-title-md">Manajemen Admin</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface dark:bg-surface-dim z-10 flex justify-between items-center px-lg ml-[280px] border-b border-outline-variant dark:border-outline">
+        <div class="flex-1 flex items-center gap-md">
+            <div class="relative w-64">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input
+                    class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+                    placeholder="Search..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-md">
+            <button
+                class="p-2 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full transition-all duration-200">
+                <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button
+                class="p-2 text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-full transition-all duration-200">
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+            <div
+                class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant cursor-pointer">
+                <span class="material-symbols-outlined text-on-primary-container">person</span>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="ml-[280px] pt-16 min-h-screen pb-24">
+        <div class="p-margin-desktop max-w-[1440px] mx-auto">
+            <header class="mb-xl">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Laporan Sistem</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Akses dan kelola berbagai laporan analitik
+                    dan operasional sistem MajorRecommend.</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                <!-- Card 1 -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] p-lg border border-outline-variant flex flex-col hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow">
+                    <div class="flex items-start justify-between mb-md">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-2xl">group</span>
+                        </div>
+                        <span
+                            class="bg-surface-container-low text-primary px-3 py-1 rounded-full font-label-md text-label-md">Data
+                            Induk</span>
+                    </div>
+                    <h3 class="font-title-lg text-title-lg text-on-surface mb-2">Laporan Data Siswa</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-lg">Laporan komprehensif
+                        mengenai profil siswa, distribusi demografi, dan status kelengkapan data kuesioner.</p>
+                    <div class="flex items-center gap-sm mt-auto pt-md border-t border-outline-variant">
+                        <button
+                            class="font-title-md text-title-md text-primary hover:bg-surface-container px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter Data
+                        </button>
+                        <button
+                            class="font-title-md text-title-md bg-primary text-on-primary hover:bg-surface-tint px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all ml-auto flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] p-lg border border-outline-variant flex flex-col hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow">
+                    <div class="flex items-start justify-between mb-md">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-2xl">rule</span>
+                        </div>
+                        <span
+                            class="bg-surface-container-low text-primary px-3 py-1 rounded-full font-label-md text-label-md">Analitik</span>
+                    </div>
+                    <h3 class="font-title-lg text-title-lg text-on-surface mb-2">Laporan Hasil Rekomendasi</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-lg">Analisis hasil
+                        rekomendasi jurusan, tingkat akurasi prediksi, dan tren minat jurusan antar angkatan.</p>
+                    <div class="flex items-center gap-sm mt-auto pt-md border-t border-outline-variant">
+                        <button
+                            class="font-title-md text-title-md text-primary hover:bg-surface-container px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter Data
+                        </button>
+                        <button
+                            class="font-title-md text-title-md bg-primary text-on-primary hover:bg-surface-tint px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all ml-auto flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] p-lg border border-outline-variant flex flex-col hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow">
+                    <div class="flex items-start justify-between mb-md">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-2xl">school</span>
+                        </div>
+                        <span
+                            class="bg-surface-container-low text-primary px-3 py-1 rounded-full font-label-md text-label-md">Akademik</span>
+                    </div>
+                    <h3 class="font-title-lg text-title-lg text-on-surface mb-2">Laporan Nilai Akademik</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-lg">Rekapitulasi nilai
+                        rata-rata mata pelajaran krusial per semester sebagai variabel input model rekomendasi.</p>
+                    <div class="flex items-center gap-sm mt-auto pt-md border-t border-outline-variant">
+                        <button
+                            class="font-title-md text-title-md text-primary hover:bg-surface-container px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter Data
+                        </button>
+                        <button
+                            class="font-title-md text-title-md bg-primary text-on-primary hover:bg-surface-tint px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all ml-auto flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1)] p-lg border border-outline-variant flex flex-col hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-shadow">
+                    <div class="flex items-start justify-between mb-md">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-2xl">model_training</span>
+                        </div>
+                        <span
+                            class="bg-surface-container-low text-primary px-3 py-1 rounded-full font-label-md text-label-md">Sistem
+                            ML</span>
+                    </div>
+                    <h3 class="font-title-lg text-title-lg text-on-surface mb-2">Laporan Training Model</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-lg">Log historis performa
+                        pelatihan model Machine Learning, metrik evaluasi (Precision, Recall), dan status dataset.</p>
+                    <div class="flex items-center gap-sm mt-auto pt-md border-t border-outline-variant">
+                        <button
+                            class="font-title-md text-title-md text-primary hover:bg-surface-container px-4 py-2 rounded-lg transition-colors flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter Data
+                        </button>
+                        <button
+                            class="font-title-md text-title-md bg-primary text-on-primary hover:bg-surface-tint px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all ml-auto flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">download</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-lg flex justify-between items-center px-lg ml-[280px] w-[calc(100%-280px)] border-t border-outline-variant bg-transparent fixed bottom-0 z-10">
+        <p class="font-label-md text-label-md text-outline dark:text-outline-variant">© 2024 MajorRecommend System.
+            Institutional Trust Dashboard.</p>
+        <ul class="flex gap-md font-label-md text-label-md text-outline dark:text-outline-variant">
+            <li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Support</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login - EduPath ML</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#943700",
+                        "on-surface-variant": "#434655",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2563eb",
+                        "secondary-fixed-dim": "#4edea3",
+                        "outline-variant": "#c3c6d7",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-container": "#bc4800",
+                        "inverse-surface": "#213145",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#737686",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary-container": "#ffede6",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-primary-container": "#eeefff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-high": "#dce9ff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "secondary": "#006c49",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#360f00",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "surface-variant": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "primary": "#004ac6",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-container": "#6cf8bb",
+                        "surface-container-highest": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "background": "#f8f9ff",
+                        "on-secondary-container": "#00714d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background min-h-screen flex flex-col">
+    <!-- Main Canvas: Centered Login Card -->
+    <main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop">
+        <div
+            class="w-full max-w-md bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.05)] overflow-hidden">
+            <!-- Header Section -->
+            <div class="px-gutter py-8 text-center border-b border-outline-variant bg-surface-bright">
+                <h1 class="font-headline-lg text-headline-lg text-primary mb-2">EduPath ML</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">Rekomendasi Jurusan</p>
+            </div>
+            <!-- Form Section -->
+            <div class="p-gutter">
+                <form action="#" class="space-y-6" method="POST">
+                    <!-- Email/NISN Field -->
+                    <div>
+                        <label class="block font-label-md text-label-md text-on-surface mb-2" for="identifier">Email
+                            atau NISN</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-outline">person</span>
+                            </div>
+                            <input
+                                class="block w-full pl-10 pr-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow"
+                                id="identifier" name="identifier" placeholder="Masukkan Email atau NISN" required=""
+                                type="text" />
+                        </div>
+                    </div>
+                    <!-- Password Field -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block font-label-md text-label-md text-on-surface"
+                                for="password">Password</label>
+                            <a class="font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors"
+                                href="#">Lupa Password?</a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-outline">lock</span>
+                            </div>
+                            <input
+                                class="block w-full pl-10 pr-10 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow"
+                                id="password" name="password" placeholder="Masukkan Password" required=""
+                                type="password" />
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <button class="text-outline hover:text-on-surface focus:outline-none" type="button">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit Button -->
+                    <div>
+                        <button
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm font-label-md text-label-md text-on-primary bg-primary-container hover:bg-on-primary-fixed-variant focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors"
+                            type="submit">
+                            Masuk
+                        </button>
+                    </div>
+                </form>
+                <!-- Divider -->
+                <div class="mt-6 relative">
+                    <div aria-hidden="true" class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-outline-variant"></div>
+                    </div>
+                    <div class="relative flex justify-center">
+                        <span
+                            class="px-2 bg-surface-container-lowest font-caption text-caption text-outline">Atau</span>
+                    </div>
+                </div>
+                <!-- Register Link -->
+                <div class="mt-6 text-center">
+                    <p class="font-body-md text-body-md text-on-surface-variant">
+                        Belum punya akun?
+                        <a class="font-label-md text-label-md text-primary hover:text-on-primary-fixed-variant transition-colors font-semibold"
+                            href="#">Daftar sekarang</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer Landing - Directly from Shared Components -->
+    <footer
+        class="w-full py-8 border-t border-outline-variant dark:border-outline bg-surface-container dark:bg-inverse-surface mt-auto">
+        <div
+            class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="font-caption text-caption text-primary dark:text-inverse-primary text-center md:text-left">
+                © 2026 EduPath ML. Hasil rekomendasi merupakan saran berbasis algoritma cerdas untuk membantu
+                perencanaan akademik Anda.
+            </p>
+            <nav class="flex gap-4 font-caption text-caption">
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                    href="#">Kebijakan Privasi</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                    href="#">Syarat &amp; Ketentuan</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors"
+                    href="#">Bantuan</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+
+</html>

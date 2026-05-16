@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hasil Rekomendasi - MajorRecommend Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-container": "#dad7ff",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-secondary-fixed-variant": "#005236",
+                        "inverse-primary": "#c3c0ff",
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#4f46e5",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-low": "#eff4ff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary-container": "#ffd4a4",
+                        "background": "#f8f9ff",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-tint": "#4d44e3",
+                        "surface-container": "#e5eeff",
+                        "secondary": "#006c49",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#464555",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-bright": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed": "#6ffbbe",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "outline": "#777587",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed": "#0f0069",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "inverse-surface": "#213145",
+                        "primary": "#3525cd",
+                        "tertiary-container": "#885500",
+                        "tertiary": "#684000",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "1rem",
+                        "xl": "2rem",
+                        "base": "4px",
+                        "sm": "0.5rem",
+                        "lg": "1.5rem",
+                        "margin-desktop": "2.5rem",
+                        "gutter": "1.5rem",
+                        "2xl": "3rem",
+                        "margin-mobile": "1rem",
+                        "xs": "0.25rem"
+                    },
+                    "fontFamily": {
+                        "title-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .ambient-shadow-card {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body-md min-h-screen">
+    <!-- SideNavBar -->
+    <aside
+        class="w-[280px] h-screen fixed left-0 top-0 shadow-sm bg-surface-container-lowest flex flex-col py-md overflow-y-auto hidden md:flex z-40">
+        <div class="px-xl mb-xl">
+            <h1 class="font-title-lg text-title-lg font-bold text-primary">MajorRecommend</h1>
+            <p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+        </div>
+        <nav class="flex-1 flex flex-col gap-sm px-md">
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <span class="font-body-md text-body-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">school</span>
+                <span class="font-body-md text-body-md">Jurusan Kuliah</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">psychology</span>
+                <span class="font-body-md text-body-md">Kriteria Minat &amp; Bakat</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">quiz</span>
+                <span class="font-body-md text-body-md">Pertanyaan Kuesioner</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">book</span>
+                <span class="font-body-md text-body-md">Mata Pelajaran</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">group</span>
+                <span class="font-body-md text-body-md">Data Siswa</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">database</span>
+                <span class="font-body-md text-body-md">Dataset Training</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">model_training</span>
+                <span class="font-body-md text-body-md">Training Model</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+                <span class="font-body-md text-body-md">Model ML</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">history_edu</span>
+                <span class="font-body-md text-body-md">Log Training</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98] text-primary font-bold border-r-4 border-primary bg-surface-container-low"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]"
+                    style="font-variation-settings: 'FILL' 1;">rule</span>
+                <span class="font-body-md text-body-md">Hasil Rekomendasi</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">assessment</span>
+                <span class="font-body-md text-body-md">Laporan</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors text-on-surface-variant cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                <span class="font-body-md text-body-md">Manajemen Admin</span>
+            </a>
+        </nav>
+    </aside>
+    <!-- TopNavBar -->
+    <header
+        class="fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 bg-surface border-b border-outline-variant flex justify-between items-center px-lg z-30 transition-all duration-200">
+        <div class="flex items-center gap-md w-1/3">
+            <button class="md:hidden text-on-surface-variant p-sm rounded-full hover:bg-surface-container-low">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="relative w-full max-w-md hidden md:block">
+                <span
+                    class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input
+                    class="w-full bg-surface-container-lowest border border-outline-variant rounded-full pl-[40px] pr-md py-sm font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Search..." type="text" />
+            </div>
+        </div>
+        <div class="flex items-center gap-sm">
+            <button class="p-sm text-on-surface-variant rounded-full hover:bg-surface-container-low transition-colors">
+                <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button class="p-sm text-on-surface-variant rounded-full hover:bg-surface-container-low transition-colors">
+                <span class="material-symbols-outlined">settings</span>
+            </button>
+            <div
+                class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-md font-bold ml-sm overflow-hidden">
+                <img alt="Admin Profile" class="w-full h-full object-cover"
+                    data-alt="A professional headshot of a corporate administrator in a bright, modern office setting. The lighting is high-key and flattering, emphasizing a clean, light-mode aesthetic with soft shadows. The overall tone is authoritative yet approachable, fitting for an institutional dashboard."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEVvrPsNVHtw9VCVDQp6is0xQF16KIE-vAofDlcoGkld22Vj2ul9ihKbWJCxh2zdn38JRfNra0c-0tsuVxi5qNwLpJaWUAYNECjOWu3_P-GLk4gvNt7r6DScMQK-A2OteosGay5lJHoBTR0ID9tTk0yYxr_PBeHwNL2zFI5308JF8Itg4XqA9EiV23OvTu5ysgq_D1ZmUuRHRrwS3oiTKyL-kAkv0lKkJrPK2tWdhSW28Ban4KP-WDXjNXRXyd_m1QGQ1nVqw4SUY" />
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="ml-0 md:ml-[280px] pt-16 min-h-[calc(100vh-80px)]">
+        <div class="px-margin-mobile md:px-margin-desktop py-xl max-w-[1440px] mx-auto flex flex-col gap-xl">
+            <!-- Page Header -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
+                <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">Hasil Rekomendasi</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Daftar hasil prediksi peminatan
+                        jurusan untuk siswa.</p>
+                </div>
+                <button
+                    class="bg-primary text-on-primary font-label-md text-label-md px-lg py-[10px] rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Laporan
+                </button>
+            </div>
+            <!-- Filters (Bento Style Card) -->
+            <div
+                class="bg-surface-container-lowest rounded-2xl p-lg ambient-shadow-card border border-outline-variant/50">
+                <div class="flex flex-col md:flex-row gap-lg">
+                    <div class="flex-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Filter
+                            Berdasarkan Kelas</label>
+                        <select
+                            class="w-full border border-outline-variant rounded-lg px-md py-[10px] font-body-md text-body-md bg-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none cursor-pointer">
+                            <option value="">Semua Kelas</option>
+                            <option value="12IPA1">XII IPA 1</option>
+                            <option value="12IPA2">XII IPA 2</option>
+                            <option value="12IPS1">XII IPS 1</option>
+                        </select>
+                    </div>
+                    <div class="flex-1">
+                        <label class="block font-label-md text-label-md text-on-surface-variant mb-xs">Filter Top
+                            Major</label>
+                        <select
+                            class="w-full border border-outline-variant rounded-lg px-md py-[10px] font-body-md text-body-md bg-transparent focus:ring-2 focus:ring-primary focus:border-primary outline-none appearance-none cursor-pointer">
+                            <option value="">Semua Jurusan</option>
+                            <option value="cs">Teknik Informatika</option>
+                            <option value="med">Kedokteran</option>
+                            <option value="bus">Manajemen Bisnis</option>
+                            <option value="art">Desain Komunikasi Visual</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button
+                            class="w-full md:w-auto bg-surface border border-outline-variant text-primary font-label-md text-label-md px-lg py-[10px] rounded-lg hover:bg-surface-container-low transition-colors">
+                            Terapkan Filter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Data Table Card -->
+            <div
+                class="bg-surface-container-lowest rounded-2xl ambient-shadow-card border border-outline-variant/50 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="font-label-md text-label-md font-bold uppercase text-outline pb-sm pt-md px-md border-b border-outline-variant/60 whitespace-nowrap">
+                                    Nama Siswa</th>
+                                <th
+                                    class="font-label-md text-label-md font-bold uppercase text-outline pb-sm pt-md px-md border-b border-outline-variant/60 whitespace-nowrap">
+                                    NISN</th>
+                                <th
+                                    class="font-label-md text-label-md font-bold uppercase text-outline pb-sm pt-md px-md border-b border-outline-variant/60 whitespace-nowrap">
+                                    Tanggal Rekomendasi</th>
+                                <th
+                                    class="font-label-md text-label-md font-bold uppercase text-outline pb-sm pt-md px-md border-b border-outline-variant/60 whitespace-nowrap">
+                                    Top 1 Major</th>
+                                <th
+                                    class="font-label-md text-label-md font-bold uppercase text-outline pb-sm pt-md px-md border-b border-outline-variant/60 whitespace-nowrap">
+                                    Skor (%)</th>
+                                <th
+                                    class="font-label-md text-label-md font-bold uppercase text-outline pb-sm pt-md px-md border-b border-outline-variant/60 whitespace-nowrap text-right">
+                                    Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-body-md text-body-md text-on-surface">
+                            <tr
+                                class="hover:bg-surface-container-lowest border-b border-outline-variant/30 transition-colors group">
+                                <td class="py-md px-md font-medium text-on-surface">Budi Santoso</td>
+                                <td class="py-md px-md text-on-surface-variant">0012345678</td>
+                                <td class="py-md px-md text-on-surface-variant">24 Okt 2024</td>
+                                <td class="py-md px-md">Teknik Informatika</td>
+                                <td class="py-md px-md">
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-[11px] font-medium bg-[#ecfdf5] text-[#065f46]">
+                                        92.5%
+                                    </span>
+                                </td>
+                                <td class="py-md px-md text-right">
+                                    <button
+                                        class="text-primary hover:text-on-primary-fixed-variant font-label-md text-label-md px-sm py-xs rounded hover:bg-surface-container-low transition-colors">Lihat
+                                        Detail</button>
+                                </td>
+                            </tr>
+                            <tr
+                                class="hover:bg-surface-container-lowest border-b border-outline-variant/30 transition-colors group">
+                                <td class="py-md px-md font-medium text-on-surface">Siti Aminah</td>
+                                <td class="py-md px-md text-on-surface-variant">0012345679</td>
+                                <td class="py-md px-md text-on-surface-variant">24 Okt 2024</td>
+                                <td class="py-md px-md">Manajemen Bisnis</td>
+                                <td class="py-md px-md">
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-[11px] font-medium bg-[#f0fdf4] text-[#166534]">
+                                        88.0%
+                                    </span>
+                                </td>
+                                <td class="py-md px-md text-right">
+                                    <button
+                                        class="text-primary hover:text-on-primary-fixed-variant font-label-md text-label-md px-sm py-xs rounded hover:bg-surface-container-low transition-colors">Lihat
+                                        Detail</button>
+                                </td>
+                            </tr>
+                            <tr
+                                class="hover:bg-surface-container-lowest border-b border-outline-variant/30 transition-colors group">
+                                <td class="py-md px-md font-medium text-on-surface">Agus Pratama</td>
+                                <td class="py-md px-md text-on-surface-variant">0012345680</td>
+                                <td class="py-md px-md text-on-surface-variant">23 Okt 2024</td>
+                                <td class="py-md px-md">Kedokteran</td>
+                                <td class="py-md px-md">
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-[11px] font-medium bg-[#fffbeb] text-[#92400e]">
+                                        76.4%
+                                    </span>
+                                </td>
+                                <td class="py-md px-md text-right">
+                                    <button
+                                        class="text-primary hover:text-on-primary-fixed-variant font-label-md text-label-md px-sm py-xs rounded hover:bg-surface-container-low transition-colors">Lihat
+                                        Detail</button>
+                                </td>
+                            </tr>
+                            <tr
+                                class="hover:bg-surface-container-lowest border-b border-outline-variant/30 transition-colors group">
+                                <td class="py-md px-md font-medium text-on-surface">Dewi Lestari</td>
+                                <td class="py-md px-md text-on-surface-variant">0012345681</td>
+                                <td class="py-md px-md text-on-surface-variant">23 Okt 2024</td>
+                                <td class="py-md px-md">Desain Komunikasi Visual</td>
+                                <td class="py-md px-md">
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-[11px] font-medium bg-[#ecfdf5] text-[#065f46]">
+                                        95.1%
+                                    </span>
+                                </td>
+                                <td class="py-md px-md text-right">
+                                    <button
+                                        class="text-primary hover:text-on-primary-fixed-variant font-label-md text-label-md px-sm py-xs rounded hover:bg-surface-container-low transition-colors">Lihat
+                                        Detail</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-lowest transition-colors group">
+                                <td class="py-md px-md font-medium text-on-surface">Reza Rahadian</td>
+                                <td class="py-md px-md text-on-surface-variant">0012345682</td>
+                                <td class="py-md px-md text-on-surface-variant">22 Okt 2024</td>
+                                <td class="py-md px-md">Ilmu Hukum</td>
+                                <td class="py-md px-md">
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-[11px] font-medium bg-[#f0fdf4] text-[#166534]">
+                                        82.3%
+                                    </span>
+                                </td>
+                                <td class="py-md px-md text-right">
+                                    <button
+                                        class="text-primary hover:text-on-primary-fixed-variant font-label-md text-label-md px-sm py-xs rounded hover:bg-surface-container-low transition-colors">Lihat
+                                        Detail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination (Optional visual only) -->
+                <div
+                    class="border-t border-outline-variant/50 px-md py-sm flex items-center justify-between bg-surface-container-lowest">
+                    <span class="font-label-md text-label-md text-on-surface-variant">Menampilkan 1 hingga 5 dari 45
+                        data</span>
+                    <div class="flex gap-xs">
+                        <button
+                            class="p-xs text-outline hover:text-primary hover:bg-surface-container-low rounded transition-colors disabled:opacity-50">
+                            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                        </button>
+                        <button
+                            class="p-xs text-outline hover:text-primary hover:bg-surface-container-low rounded transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-lg border-t border-outline-variant bg-transparent flex flex-col md:flex-row justify-between items-center px-lg md:ml-[280px] md:w-[calc(100%-280px)] mt-auto">
+        <p class="font-label-md text-label-md text-outline">© 2024 MajorRecommend System. Institutional Trust Dashboard.
+        </p>
+        <div class="flex gap-md mt-sm md:mt-0">
+            <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                href="#">Documentation</a>
+            <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                href="#">Support</a>
+            <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors" href="#">Privacy
+                Policy</a>
+        </div>
+    </footer>
+</body>
+
+</html>

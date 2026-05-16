@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EduAdmin - Students Management</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "outline": "#737686",
+                        "inverse-surface": "#213145",
+                        "inverse-primary": "#b4c5ff",
+                        "secondary-fixed-dim": "#4edea3",
+                        "secondary-fixed": "#6ffbbe",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-primary-fixed": "#00174b",
+                        "surface-dim": "#cbdbf5",
+                        "secondary": "#006c49",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-low": "#eff4ff",
+                        "secondary-container": "#6cf8bb",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-container": "#ffede6",
+                        "background": "#f8f9ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#943700",
+                        "surface-container-highest": "#d3e4fe",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#bc4800",
+                        "on-primary-container": "#eeefff",
+                        "on-background": "#0b1c30",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "primary-container": "#2563eb",
+                        "primary": "#004ac6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-container": "#00714d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "caption": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface text-body-md antialiased flex">
+    <!-- SideNavBar -->
+    <nav
+        class="bg-surface-container-lowest dark:bg-inverse-surface text-primary dark:text-primary-fixed-dim font-label-md text-label-md h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest dark:bg-inverse-surface shadow-md flex flex-col h-full py-base gap-2 z-40 hidden md:flex">
+        <div class="px-6 py-4 border-b border-outline-variant">
+            <h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">
+                EduRecommend</h1>
+            <p class="font-caption text-caption text-on-surface-variant">System Administrator</p>
+        </div>
+        <div class="flex-1 overflow-y-auto px-4 py-4 space-y-1">
+            <a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all hover:translate-x-1 duration-200 rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3" data-icon="school">school</span>
+                Schools
+            </a>
+            <a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all hover:translate-x-1 duration-200 rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3" data-icon="groups">groups</span>
+                Classes
+            </a>
+            <a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all hover:translate-x-1 duration-200 rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3" data-icon="book">book</span>
+                Subjects
+            </a>
+            <a class="flex items-center px-4 py-3 bg-primary-container dark:bg-primary-fixed-dim text-on-primary-container dark:text-on-primary-fixed font-semibold rounded-lg hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all hover:translate-x-1 duration-200"
+                href="#">
+                <span class="material-symbols-outlined mr-3" data-icon="person" data-weight="fill"
+                    style="font-variation-settings: 'FILL' 1;">person</span>
+                Students
+            </a>
+            <a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all hover:translate-x-1 duration-200 rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3" data-icon="psychology">psychology</span>
+                ML Models
+            </a>
+            <a class="flex items-center px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-all hover:translate-x-1 duration-200 rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3" data-icon="assessment">assessment</span>
+                Reports
+            </a>
+        </div>
+        <div class="px-4 py-4 border-t border-outline-variant space-y-1">
+            <button
+                class="w-full bg-primary-container text-on-primary-container py-2 rounded-lg font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors flex items-center justify-center gap-2 mb-4">
+                <span class="material-symbols-outlined">add</span> New Record
+            </button>
+            <a class="flex items-center px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3 text-sm" data-icon="help">help</span>
+                Support
+            </a>
+            <a class="flex items-center px-4 py-2 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-lg"
+                href="#">
+                <span class="material-symbols-outlined mr-3 text-sm" data-icon="history">history</span>
+                Logs
+            </a>
+        </div>
+    </nav>
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col md:ml-64 min-h-screen">
+        <!-- TopNavBar (Mobile) -->
+        <header
+            class="bg-surface dark:bg-on-surface font-title-md text-title-md docked full-width top-0 shadow-sm dark:shadow-none shadow-sm flex justify-between items-center px-margin-mobile h-16 w-full sticky top-0 z-50 md:hidden">
+            <div class="flex items-center gap-4">
+                <span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+                <span
+                    class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">EduAdmin</span>
+            </div>
+            <div class="flex items-center gap-4 text-primary dark:text-primary-fixed-dim">
+                <span class="material-symbols-outlined cursor-pointer" data-icon="notifications">notifications</span>
+                <img alt="Administrator profile photo"
+                    class="w-8 h-8 rounded-full border border-outline-variant cursor-pointer"
+                    data-alt="A close-up, professional portrait of a confident male school administrator in his 40s. He is wearing a crisp white shirt and a subtly patterned navy tie. The lighting is soft and natural, emphasizing approachability and competence. The background is a pleasantly blurred modern office setting with hints of greenery and bright natural light streaming through a window, conveying a modern, organized, and welcoming educational environment."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEQQcw4UOozmy6yAwgS1GPLeyOnwLue-nndutZ_8_sNttiCLpwItUrdw0QhhnPuqy2PeH3u7RDH-h-IQP1b1jj4kD19yOm4hILoySP25VPYEyZVcozAuQ12kLwtyq8-Ssxd46-0irXxvEAjPa-AHoMhuHKdddS3zFXQBLTUi1VRdWM1iyNM2IyyoMPIX8FBd-F8if_9tJPcKwmYf8OL7dYanM2_ureaYHo0vSJBq9IayyxeBQCQ4eysJIxunRFwzmzHm5NZ1JnJ8Y3" />
+            </div>
+        </header>
+        <!-- TopNavBar (Desktop) -->
+        <header
+            class="bg-surface dark:bg-on-surface font-title-md text-title-md docked full-width top-0 shadow-sm dark:shadow-none shadow-sm flex justify-between items-center px-margin-desktop h-16 w-full sticky top-0 z-30 hidden md:flex">
+            <div class="flex items-center w-full max-w-xl">
+                <div class="relative w-full">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface transition-all"
+                        placeholder="Search by Name, NISN..." type="text" />
+                </div>
+            </div>
+            <div class="flex items-center gap-6 text-primary dark:text-primary-fixed-dim">
+                <span
+                    class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors active:scale-95 duration-100 p-2 rounded-full"
+                    data-icon="notifications">notifications</span>
+                <span
+                    class="material-symbols-outlined cursor-pointer hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors active:scale-95 duration-100 p-2 rounded-full"
+                    data-icon="settings">settings</span>
+                <div class="h-8 w-px bg-outline-variant"></div>
+                <img alt="Administrator profile photo"
+                    class="w-9 h-9 rounded-full border-2 border-surface-container-highest cursor-pointer hover:opacity-90 transition-opacity"
+                    data-alt="A close-up, professional portrait of a confident male school administrator in his 40s. He is wearing a crisp white shirt and a subtly patterned navy tie. The lighting is soft and natural, emphasizing approachability and competence. The background is a pleasantly blurred modern office setting with hints of greenery and bright natural light streaming through a window, conveying a modern, organized, and welcoming educational environment."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzXdU5XBf_QngfQiYxxRKnLIWOSvXyXjqvToHcr6eATj9aR89JYaAH4dx52ffXCpGoEBDzVnc0wc4RMVimn25Zmfk0CvDC_LFwgsGCbty41tWesh3vAJ0EJ8T-_t7mx3Zvbd7P6WabSuxnsaVVcwy_uGOG52comOFgzwDbSyAX92CBrQZ-OKPnq8fCT5Yp4YegpEuXScwGiLQrMHNWEkSMcJkwCNJm33pcaLnRjuSlnIvPplJtTe3fPTk8r7jvCyoZmlXdphrV2iGd" />
+            </div>
+        </header>
+        <!-- Main Canvas -->
+        <main class="flex-1 p-margin-mobile md:p-margin-desktop max-w-container-max-width mx-auto w-full">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface">Students Management</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and review academic paths
+                        for SMA/K students.</p>
+                </div>
+                <div class="flex gap-3 w-full md:w-auto">
+                    <button
+                        class="flex-1 md:flex-none px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[20px]">filter_list</span> Filter
+                    </button>
+                    <button
+                        class="flex-1 md:flex-none px-4 py-2 bg-primary-container text-on-primary-container font-label-md text-label-md rounded-lg hover:bg-primary hover:text-on-primary transition-colors shadow-sm">
+                        Export List
+                    </button>
+                </div>
+            </div>
+            <!-- Bento Data View Container -->
+            <div
+                class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col h-[700px]">
+                <!-- Toolbar -->
+                <div
+                    class="p-4 border-b border-outline-variant bg-surface flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <span class="font-label-md text-label-md text-on-surface-variant">Showing 1-10 of 1,245
+                            students</span>
+                    </div>
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <div class="relative w-full sm:w-64 md:hidden">
+                            <span
+                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+                            <input
+                                class="w-full pl-9 pr-3 py-1.5 border border-outline-variant rounded-lg bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface transition-all text-sm"
+                                placeholder="Search..." type="text" />
+                        </div>
+                        <select
+                            class="w-full sm:w-auto px-3 py-1.5 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none">
+                            <option>All Schools</option>
+                            <option>SMA N 1 Jakarta</option>
+                            <option>SMK Budi Utomo</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Table Header -->
+                <div
+                    class="grid grid-cols-12 gap-4 px-6 py-3 bg-surface-container-low border-b border-outline-variant font-label-md text-label-md text-on-surface-variant uppercase tracking-wider sticky top-0 z-10 hidden lg:grid">
+                    <div class="col-span-3">Student Name</div>
+                    <div class="col-span-2">NISN</div>
+                    <div class="col-span-2">School</div>
+                    <div class="col-span-1">Class</div>
+                    <div class="col-span-2">ML Status</div>
+                    <div class="col-span-2 text-right">Actions</div>
+                </div>
+                <!-- Table Body -->
+                <div class="flex-1 overflow-y-auto bg-surface-container-lowest">
+                    <!-- Row 1 -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:px-6 lg:py-4 border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors group items-center">
+                        <div class="col-span-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary font-title-md text-title-md shrink-0">
+                                AD</div>
+                            <div>
+                                <p class="font-title-md text-title-md text-on-surface text-base">Andi Darmawan</p>
+                                <p class="font-caption text-caption text-on-surface-variant lg:hidden">0041234567 • SMA
+                                    N 1 Jakarta</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block">0041234567
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block truncate"
+                            title="SMA N 1 Jakarta">SMA N 1 Jakarta</div>
+                        <div class="col-span-1 font-body-md text-body-md text-on-surface hidden lg:block">XII IPA 1
+                        </div>
+                        <div class="col-span-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary font-label-md text-label-md text-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Path Generated
+                            </span>
+                        </div>
+                        <div
+                            class="col-span-2 flex justify-end gap-2 mt-3 lg:mt-0 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="View Profile">
+                                <span class="material-symbols-outlined text-[20px]">visibility</span>
+                            </button>
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="Edit Record">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Row 2 -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:px-6 lg:py-4 border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors group items-center bg-surface-bright/30">
+                        <div class="col-span-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary font-title-md text-title-md shrink-0">
+                                BS</div>
+                            <div>
+                                <p class="font-title-md text-title-md text-on-surface text-base">Budi Santoso</p>
+                                <p class="font-caption text-caption text-on-surface-variant lg:hidden">0049876543 • SMK
+                                    Budi Utomo</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block">0049876543
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block truncate"
+                            title="SMK Budi Utomo">SMK Budi Utomo</div>
+                        <div class="col-span-1 font-body-md text-body-md text-on-surface hidden lg:block">XI TKJ 2</div>
+                        <div class="col-span-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-variant text-primary font-label-md text-label-md text-xs">
+                                <span class="material-symbols-outlined text-[14px]">sync</span> Analyzing
+                            </span>
+                        </div>
+                        <div
+                            class="col-span-2 flex justify-end gap-2 mt-3 lg:mt-0 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="View Profile">
+                                <span class="material-symbols-outlined text-[20px]">visibility</span>
+                            </button>
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="Edit Record">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Row 3 -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:px-6 lg:py-4 border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors group items-center">
+                        <div class="col-span-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary font-title-md text-title-md shrink-0">
+                                CP</div>
+                            <div>
+                                <p
+                                    class="font-title-md text-title-md text-on-surface text-base flex items-center gap-2">
+                                    Citra Putri
+                                    <span class="material-symbols-outlined text-[16px] text-tertiary-container"
+                                        title="Needs Attention">warning</span>
+                                </p>
+                                <p class="font-caption text-caption text-on-surface-variant lg:hidden">0051122334 • SMA
+                                    Taruna Nusantara</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block">0051122334
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block truncate"
+                            title="SMA Taruna Nusantara">SMA Taruna Nusantara</div>
+                        <div class="col-span-1 font-body-md text-body-md text-on-surface hidden lg:block">X MIPA 3</div>
+                        <div class="col-span-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container/50 text-error font-label-md text-label-md text-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-error"></span> Incomplete Data
+                            </span>
+                        </div>
+                        <div
+                            class="col-span-2 flex justify-end gap-2 mt-3 lg:mt-0 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="View Profile">
+                                <span class="material-symbols-outlined text-[20px]">visibility</span>
+                            </button>
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="Edit Record">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Row 4 -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-12 gap-4 p-4 lg:px-6 lg:py-4 border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors group items-center">
+                        <div class="col-span-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary font-title-md text-title-md shrink-0">
+                                DP</div>
+                            <div>
+                                <p class="font-title-md text-title-md text-on-surface text-base">Dian Permata</p>
+                                <p class="font-caption text-caption text-on-surface-variant lg:hidden">0045566778 • SMA
+                                    N 3 Bandung</p>
+                            </div>
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block">0045566778
+                        </div>
+                        <div class="col-span-2 font-body-md text-body-md text-on-surface hidden lg:block truncate"
+                            title="SMA N 3 Bandung">SMA N 3 Bandung</div>
+                        <div class="col-span-1 font-body-md text-body-md text-on-surface hidden lg:block">XII IPS 2
+                        </div>
+                        <div class="col-span-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary font-label-md text-label-md text-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Path Generated
+                            </span>
+                        </div>
+                        <div
+                            class="col-span-2 flex justify-end gap-2 mt-3 lg:mt-0 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity">
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="View Profile">
+                                <span class="material-symbols-outlined text-[20px]">visibility</span>
+                            </button>
+                            <button
+                                class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded-md transition-colors"
+                                title="Edit Record">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination Footer -->
+                <div class="p-4 border-t border-outline-variant bg-surface flex justify-between items-center">
+                    <button
+                        class="px-3 py-1.5 border border-outline-variant rounded-md text-on-surface-variant font-label-md text-label-md text-sm hover:bg-surface-container-low transition-colors disabled:opacity-50"
+                        disabled="">
+                        Previous
+                    </button>
+                    <div class="flex gap-1">
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-md bg-primary text-on-primary font-label-md text-label-md text-sm">1</button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-md text-on-surface hover:bg-surface-container-low font-label-md text-label-md text-sm transition-colors">2</button>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-md text-on-surface hover:bg-surface-container-low font-label-md text-label-md text-sm transition-colors">3</button>
+                        <span class="w-8 h-8 flex items-center justify-center text-on-surface-variant">...</span>
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-md text-on-surface hover:bg-surface-container-low font-label-md text-label-md text-sm transition-colors">125</button>
+                    </div>
+                    <button
+                        class="px-3 py-1.5 border border-outline-variant rounded-md text-on-surface font-label-md text-label-md text-sm hover:bg-surface-container-low transition-colors">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer
+            class="bg-surface-container-lowest dark:bg-on-surface text-primary dark:text-primary-fixed-dim font-caption text-caption w-full bottom-0 bg-surface-container-lowest dark:bg-on-surface flat no shadows flex justify-between items-center px-margin-desktop py-4 w-full border-t border-outline-variant dark:border-outline mt-auto">
+            <div class="font-label-md text-label-md font-bold text-on-surface-variant">
+                © 2024 EduRecommend AI. All Rights Reserved.
+            </div>
+            <div class="flex gap-6">
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors opacity-80 hover:opacity-100"
+                    href="#">Privacy Policy</a>
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors opacity-80 hover:opacity-100"
+                    href="#">System Status</a>
+                <a class="text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors opacity-80 hover:opacity-100"
+                    href="#">Contact Support</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

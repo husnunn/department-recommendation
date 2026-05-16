@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Detail Model Machine Learning - MajorRecommend Admin</title>
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#006c49",
+                        "on-secondary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#0f0069",
+                        "outline": "#777587",
+                        "primary": "#3525cd",
+                        "on-primary-container": "#dad7ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#ffd4a4",
+                        "surface-tint": "#4d44e3",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary": "#684000",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface-variant": "#464555",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#885500",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#4f46e5",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "xs": "0.25rem",
+                        "2xl": "3rem",
+                        "margin-mobile": "1rem",
+                        "base": "4px",
+                        "md": "1rem",
+                        "margin-desktop": "2.5rem",
+                        "sm": "0.5rem",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": [
+                            "Inter"
+                        ],
+                        "label-md": [
+                            "Inter"
+                        ],
+                        "title-md": [
+                            "Inter"
+                        ],
+                        "title-lg": [
+                            "Inter"
+                        ],
+                        "body-lg": [
+                            "Inter"
+                        ],
+                        "headline-md": [
+                            "Inter"
+                        ],
+                        "headline-lg": [
+                            "Inter"
+                        ],
+                        "display-lg": [
+                            "Inter"
+                        ],
+                        "body-md": [
+                            "Inter"
+                        ]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": [
+                            "28px",
+                            {
+                                "lineHeight": "36px",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "label-md": [
+                            "12px",
+                            {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "title-md": [
+                            "16px",
+                            {
+                                "lineHeight": "24px",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "title-lg": [
+                            "20px",
+                            {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-lg": [
+                            "16px",
+                            {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-md": [
+                            "24px",
+                            {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "headline-lg": [
+                            "32px",
+                            {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "display-lg": [
+                            "48px",
+                            {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "body-md": [
+                            "14px",
+                            {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex">
+    <!-- SideNavBar (Hidden on Mobile) -->
+    <aside
+        class="hidden md:flex bg-surface-container-lowest shadow-sm w-[280px] h-screen fixed left-0 top-0 flex-col py-md overflow-y-auto border-r border-outline-variant/30 z-20">
+        <div class="px-lg mb-xl flex items-center gap-sm">
+            <span class="material-symbols-outlined text-primary text-[32px]">admin_panel_settings</span>
+            <div>
+                <h1 class="font-title-lg text-title-lg font-bold text-primary">MajorRecommend</h1>
+                <p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-md flex flex-col gap-xs">
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span class="font-body-md text-body-md">Dashboard</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">school</span>
+                <span class="font-body-md text-body-md">Jurusan Kuliah</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">psychology</span>
+                <span class="font-body-md text-body-md">Kriteria Minat &amp; Bakat</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">quiz</span>
+                <span class="font-body-md text-body-md">Pertanyaan Kuesioner</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">book</span>
+                <span class="font-body-md text-body-md">Mata Pelajaran</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">group</span>
+                <span class="font-body-md text-body-md">Data Siswa</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">database</span>
+                <span class="font-body-md text-body-md">Dataset Training</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">model_training</span>
+                <span class="font-body-md text-body-md">Training Model</span>
+            </a>
+            <!-- ACTIVE TAB -->
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-low cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+                <span class="font-body-md text-body-md">Model ML</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">history_edu</span>
+                <span class="font-body-md text-body-md">Log Training</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">rule</span>
+                <span class="font-body-md text-body-md">Hasil Rekomendasi</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">assessment</span>
+                <span class="font-body-md text-body-md">Laporan</span>
+            </a>
+            <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                <span class="font-body-md text-body-md">Manajemen Admin</span>
+            </a>
+        </nav>
+    </aside>
+    <!-- Main Content Canvas -->
+    <main class="flex-1 ml-0 md:ml-[280px] flex flex-col min-h-screen">
+        <!-- TopNavBar -->
+        <header
+            class="bg-surface fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 border-b border-outline-variant flex justify-between items-center px-lg z-10">
+            <div class="flex items-center md:hidden">
+                <button
+                    class="text-on-surface-variant hover:bg-surface-container-low rounded-full p-sm transition-all duration-200">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <span class="font-title-md text-title-md text-primary ml-sm font-bold">MajorRecommend Admin</span>
+            </div>
+            <div class="hidden md:flex flex-1 max-w-md relative">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+                <input
+                    class="w-full bg-surface-container-lowest border border-outline-variant rounded-full py-2 pl-10 pr-4 font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-on-surface placeholder:text-outline-variant"
+                    placeholder="Search..." type="text" />
+            </div>
+            <div class="flex items-center gap-sm ml-auto">
+                <button
+                    class="text-on-surface-variant hover:bg-surface-container-low rounded-full p-sm transition-all duration-200 relative">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+                </button>
+                <button
+                    class="text-on-surface-variant hover:bg-surface-container-low rounded-full p-sm transition-all duration-200">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+                <div
+                    class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center ml-sm font-title-md text-title-md font-bold cursor-pointer">
+                    A
+                </div>
+            </div>
+        </header>
+        <!-- Page Content -->
+        <div class="flex-1 p-margin-mobile md:p-margin-desktop mt-16 max-w-[1440px] mx-auto w-full">
+            <!-- Page Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
+                <div>
+                    <h2
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">
+                        Detail Model Machine Learning</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Informasi teknis mengenai
+                        model Random Forest yang saat ini aktif digunakan untuk rekomendasi jurusan.</p>
+                </div>
+                <div class="flex items-center gap-sm shrink-0">
+                    <button
+                        class="flex items-center gap-xs px-lg py-2 rounded-full border border-outline text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">history</span>
+                        Switch Version
+                    </button>
+                    <button
+                        class="flex items-center gap-xs px-lg py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-fixed hover:text-on-primary-fixed shadow-sm transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">download</span>
+                        Download Model File
+                    </button>
+                </div>
+            </div>
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+                <!-- Hyperparameters Card -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] p-lg flex flex-col h-full border border-outline-variant/30">
+                    <div class="flex items-center gap-sm mb-lg border-b border-outline-variant/50 pb-sm">
+                        <span class="material-symbols-outlined text-primary">tune</span>
+                        <h3 class="font-title-md text-title-md text-on-surface">Hyperparameters</h3>
+                    </div>
+                    <div class="flex-1 flex flex-col gap-3">
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-outline-variant/20 last:border-0">
+                            <span class="font-body-md text-body-md text-on-surface-variant">n_estimators</span>
+                            <span
+                                class="font-body-md text-body-md text-on-surface font-medium bg-surface-container py-1 px-3 rounded-md">200</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-outline-variant/20 last:border-0">
+                            <span class="font-body-md text-body-md text-on-surface-variant">max_depth</span>
+                            <span
+                                class="font-body-md text-body-md text-on-surface font-medium bg-surface-container py-1 px-3 rounded-md">15</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-outline-variant/20 last:border-0">
+                            <span class="font-body-md text-body-md text-on-surface-variant">min_samples_split</span>
+                            <span
+                                class="font-body-md text-body-md text-on-surface font-medium bg-surface-container py-1 px-3 rounded-md">5</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-outline-variant/20 last:border-0">
+                            <span class="font-body-md text-body-md text-on-surface-variant">min_samples_leaf</span>
+                            <span
+                                class="font-body-md text-body-md text-on-surface font-medium bg-surface-container py-1 px-3 rounded-md">2</span>
+                        </div>
+                        <div
+                            class="flex justify-between items-center py-2 border-b border-outline-variant/20 last:border-0">
+                            <span class="font-body-md text-body-md text-on-surface-variant">criterion</span>
+                            <span
+                                class="font-body-md text-body-md text-on-surface font-medium bg-surface-container py-1 px-3 rounded-md">gini</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature Importance Card -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] p-lg lg:col-span-2 flex flex-col h-full border border-outline-variant/30">
+                    <div class="flex items-center justify-between mb-lg border-b border-outline-variant/50 pb-sm">
+                        <div class="flex items-center gap-sm">
+                            <span class="material-symbols-outlined text-primary">bar_chart</span>
+                            <h3 class="font-title-md text-title-md text-on-surface">Feature Importance</h3>
+                        </div>
+                        <span class="font-label-md text-label-md text-outline">Top 5 Influencers</span>
+                    </div>
+                    <div class="flex-1 flex flex-col justify-center gap-md">
+                        <!-- Bar Item -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-body-md text-body-md text-on-surface-variant">Nilai Matematika</span>
+                                <span class="font-body-md text-body-md text-on-surface font-medium">28.5%</span>
+                            </div>
+                            <div class="w-full bg-surface-container-high rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 28.5%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar Item -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-body-md text-body-md text-on-surface-variant">Minat Teknologi &amp;
+                                    Komputer</span>
+                                <span class="font-body-md text-body-md text-on-surface font-medium">22.1%</span>
+                            </div>
+                            <div class="w-full bg-surface-container-high rounded-full h-2">
+                                <div class="bg-primary/80 h-2 rounded-full" style="width: 22.1%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar Item -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-body-md text-body-md text-on-surface-variant">Nilai Fisika</span>
+                                <span class="font-body-md text-body-md text-on-surface font-medium">18.4%</span>
+                            </div>
+                            <div class="w-full bg-surface-container-high rounded-full h-2">
+                                <div class="bg-primary/60 h-2 rounded-full" style="width: 18.4%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar Item -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-body-md text-body-md text-on-surface-variant">Bakat Analitis</span>
+                                <span class="font-body-md text-body-md text-on-surface font-medium">15.0%</span>
+                            </div>
+                            <div class="w-full bg-surface-container-high rounded-full h-2">
+                                <div class="bg-primary/40 h-2 rounded-full" style="width: 15.0%"></div>
+                            </div>
+                        </div>
+                        <!-- Bar Item -->
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-body-md text-body-md text-on-surface-variant">Nilai Bahasa
+                                    Inggris</span>
+                                <span class="font-body-md text-body-md text-on-surface font-medium">9.2%</span>
+                            </div>
+                            <div class="w-full bg-surface-container-high rounded-full h-2">
+                                <div class="bg-primary/30 h-2 rounded-full" style="width: 9.2%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Model Versioning Card -->
+                <div
+                    class="bg-surface-container-lowest rounded-2xl shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] p-lg lg:col-span-3 border border-outline-variant/30 mt-sm">
+                    <div class="flex items-center gap-sm mb-lg border-b border-outline-variant/50 pb-sm">
+                        <span class="material-symbols-outlined text-primary">merge</span>
+                        <h3 class="font-title-md text-title-md text-on-surface">Model Versioning History</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-outline-variant/30">
+                                    <th
+                                        class="py-3 px-4 font-label-md text-label-md text-outline uppercase tracking-wider">
+                                        Version</th>
+                                    <th
+                                        class="py-3 px-4 font-label-md text-label-md text-outline uppercase tracking-wider">
+                                        Date Deployed</th>
+                                    <th
+                                        class="py-3 px-4 font-label-md text-label-md text-outline uppercase tracking-wider">
+                                        Accuracy</th>
+                                    <th
+                                        class="py-3 px-4 font-label-md text-label-md text-outline uppercase tracking-wider">
+                                        F1 Score</th>
+                                    <th
+                                        class="py-3 px-4 font-label-md text-label-md text-outline uppercase tracking-wider">
+                                        Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface font-medium">v1.3.0
+                                    </td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface-variant">24 Oct 2023,
+                                        14:30</td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface">92.4%</td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface">0.91</td>
+                                    <td class="py-3 px-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#ecfdf5] text-[#065f46] border border-[#a7f3d0]">
+                                            Active
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr
+                                    class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/10">
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface font-medium">v1.2.5
+                                    </td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface-variant">10 Sep 2023,
+                                        09:15</td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface">90.1%</td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface">0.89</td>
+                                    <td class="py-3 px-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant border border-outline-variant">
+                                            Archived
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-surface-container-low transition-colors">
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface font-medium">v1.0.0
+                                    </td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface-variant">01 Jan 2023,
+                                        10:00</td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface">85.5%</td>
+                                    <td class="py-3 px-4 font-body-md text-body-md text-on-surface">0.84</td>
+                                    <td class="py-3 px-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant border border-outline-variant">
+                                            Archived
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer
+            class="w-full py-lg border-t border-outline-variant flex justify-between items-center px-lg bg-transparent mt-auto">
+            <p class="font-label-md text-label-md text-outline dark:text-outline-variant">
+                © 2024 MajorRecommend System. Institutional Trust Dashboard.
+            </p>
+            <div class="flex gap-md">
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Documentation</a>
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Support</a>
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Privacy Policy</a>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>

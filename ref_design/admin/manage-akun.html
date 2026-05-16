@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Manajemen Pengguna Admin - MajorRecommend</title>
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#006c49",
+                        "on-secondary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#0f0069",
+                        "outline": "#777587",
+                        "primary": "#3525cd",
+                        "on-primary-container": "#dad7ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#ffd4a4",
+                        "surface-tint": "#4d44e3",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary": "#684000",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface-variant": "#464555",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#885500",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#4f46e5",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "xs": "0.25rem",
+                        "2xl": "3rem",
+                        "margin-mobile": "1rem",
+                        "base": "4px",
+                        "md": "1rem",
+                        "margin-desktop": "2.5rem",
+                        "sm": "0.5rem",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Ambient Shadow Level 1 */
+        .ambient-shadow-1 {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex">
+    <!-- Shared Component: SideNavBar -->
+    <nav
+        class="hidden md:flex shadow-sm bg-surface-container-lowest w-[280px] h-screen fixed left-0 top-0 flex flex-col h-full py-md overflow-y-auto z-20">
+        <div class="px-xl mb-xl mt-lg">
+            <h1 class="font-title-lg text-title-lg font-bold text-primary">MajorRecommend</h1>
+            <p class="font-label-md text-label-md text-outline">Admin Console</p>
+        </div>
+        <ul class="flex-1 flex flex-col gap-xs px-md">
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="font-title-md text-title-md">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">school</span>
+                    <span class="font-title-md text-title-md">Jurusan Kuliah</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">psychology</span>
+                    <span class="font-title-md text-title-md">Kriteria Minat &amp; Bakat</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">quiz</span>
+                    <span class="font-title-md text-title-md">Pertanyaan Kuesioner</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">book</span>
+                    <span class="font-title-md text-title-md">Mata Pelajaran</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">group</span>
+                    <span class="font-title-md text-title-md">Data Siswa</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">database</span>
+                    <span class="font-title-md text-title-md">Dataset Training</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">model_training</span>
+                    <span class="font-title-md text-title-md">Training Model</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">smart_toy</span>
+                    <span class="font-title-md text-title-md">Model ML</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">history_edu</span>
+                    <span class="font-title-md text-title-md">Log Training</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">rule</span>
+                    <span class="font-title-md text-title-md">Hasil Rekomendasi</span>
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined">assessment</span>
+                    <span class="font-title-md text-title-md">Laporan</span>
+                </a>
+            </li>
+            <!-- Active Tab -->
+            <li>
+                <a class="flex items-center gap-md px-md py-sm bg-surface-container-low text-primary font-bold border-r-4 border-primary cursor-pointer active:scale-[0.98]"
+                    href="#">
+                    <span class="material-symbols-outlined"
+                        style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+                    <span class="font-title-md text-title-md">Manajemen Admin</span>
+                </a>
+            </li>
+        </ul>
+        <div class="mt-auto px-lg pt-lg border-t border-outline-variant">
+            <div class="flex items-center gap-sm">
+                <div
+                    class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-lg font-bold">
+                    A</div>
+                <div>
+                    <p class="font-title-md text-title-md text-on-surface">Admin User</p>
+                    <p class="font-label-md text-label-md text-outline">admin@system.edu</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content Wrapper -->
+    <div class="w-full md:ml-[280px] min-h-screen flex flex-col">
+        <!-- Shared Component: TopNavBar -->
+        <header
+            class="bg-surface fixed top-0 right-0 w-full md:w-[calc(100%-280px)] h-16 border-b border-outline-variant z-10 flex justify-between items-center px-lg transition-all duration-200">
+            <div class="flex items-center gap-md">
+                <button class="md:hidden text-on-surface-variant">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div
+                    class="bg-surface-container-low rounded-full px-md py-sm flex items-center gap-sm w-64 border border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                    <span class="material-symbols-outlined text-outline">search</span>
+                    <input
+                        class="bg-transparent border-none outline-none text-body-md font-body-md w-full placeholder:text-outline text-on-surface"
+                        placeholder="Search..." type="text" />
+                </div>
+            </div>
+            <div class="flex items-center gap-sm">
+                <button
+                    class="p-sm text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-200">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="p-sm text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-200">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+                <div
+                    class="ml-md w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-title-md font-bold shadow-sm">
+                    A
+                </div>
+            </div>
+        </header>
+        <!-- Canvas -->
+        <main class="flex-1 mt-16 p-margin-mobile md:p-margin-desktop bg-background max-w-[1440px] mx-auto w-full">
+            <!-- Page Header -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-xl">
+                <div>
+                    <h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Manajemen Pengguna Admin</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Kelola hak akses dan akun administrator
+                        sistem.</p>
+                </div>
+                <button
+                    class="bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container px-lg py-sm rounded-lg font-title-md text-title-md flex items-center gap-sm transition-colors shadow-sm w-fit">
+                    <span class="material-symbols-outlined">add</span>
+                    Tambah Admin
+                </button>
+            </div>
+            <!-- Data Table Card -->
+            <div
+                class="bg-surface-container-lowest rounded-2xl ambient-shadow-1 overflow-hidden border border-outline-variant">
+                <!-- Table Controls (Optional Filter/View Options) -->
+                <div class="p-lg border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+                    <div class="font-title-md text-title-md text-on-surface font-medium">Daftar Administrator</div>
+                    <button
+                        class="text-primary hover:bg-surface-container-low px-sm py-xs rounded flex items-center gap-xs font-label-md text-label-md transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                    </button>
+                </div>
+                <!-- Table Wrapper for horizontal scroll on small screens -->
+                <div class="overflow-x-auto w-full">
+                    <table class="w-full text-left border-collapse whitespace-nowrap">
+                        <thead class="bg-surface-container-lowest">
+                            <tr>
+                                <th
+                                    class="py-md px-lg font-label-md text-label-md uppercase text-outline font-bold tracking-wider border-b border-outline-variant">
+                                    Nama</th>
+                                <th
+                                    class="py-md px-lg font-label-md text-label-md uppercase text-outline font-bold tracking-wider border-b border-outline-variant">
+                                    Email</th>
+                                <th
+                                    class="py-md px-lg font-label-md text-label-md uppercase text-outline font-bold tracking-wider border-b border-outline-variant">
+                                    Role</th>
+                                <th
+                                    class="py-md px-lg font-label-md text-label-md uppercase text-outline font-bold tracking-wider border-b border-outline-variant">
+                                    Status</th>
+                                <th
+                                    class="py-md px-lg font-label-md text-label-md uppercase text-outline font-bold tracking-wider border-b border-outline-variant text-right">
+                                    Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-body-md font-body-md text-on-surface">
+                            <!-- Row 1 -->
+                            <tr
+                                class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+                                <td class="py-md px-lg">
+                                    <div class="flex items-center gap-sm">
+                                        <img alt="Avatar User"
+                                            class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm"
+                                            data-alt="A professional headshot of a confident administrator with short dark hair, wearing a neat indigo blue dress shirt, set against a pristine, brightly lit white studio background. The lighting is high-key and soft, emphasizing a clean, modern corporate aesthetic."
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuASDoEED1w_efJAfM2sor1uU8AndZcIUeTcl8yHK77dllnzTfNu08YCECkc-EbMYFLyT6l1SOruq3t0ZUAjZu3pkKsGENxrGr1K_8XSIaGLWlFGtiTXzprpnIygcdYcmhDXI4ZOoBAeJmT1JUTZlxFn1bMUBpNzURZKiyssvoxeRK0XFUNuh0yNUQufOhpakqT6FoOC0xvqyZ2TW-Zwgc7SCXqwjD_f2EMlpLn8UR3uusvnuCo8WOwqM16mUynoVcamx9jAP6tDFrE" />
+                                        <span class="font-title-md text-title-md text-on-surface">Budi Santoso</span>
+                                    </div>
+                                </td>
+                                <td class="py-md px-lg text-on-surface-variant">budi.santoso@system.edu</td>
+                                <td class="py-md px-lg">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-tertiary-container text-on-tertiary-container font-medium">Super
+                                        Admin</span>
+                                </td>
+                                <td class="py-md px-lg">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-secondary-container text-on-secondary-container font-medium">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                        Aktif
+                                    </span>
+                                </td>
+                                <td class="py-md px-lg text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors"
+                                            title="Hapus">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr
+                                class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+                                <td class="py-md px-lg">
+                                    <div class="flex items-center gap-sm">
+                                        <img alt="Avatar User"
+                                            class="w-10 h-10 rounded-full object-cover border border-outline-variant shadow-sm"
+                                            data-alt="A clear, professional portrait of a female academic counselor smiling warmly, wearing a smart grey blazer over a white blouse. The background is a clean, softly blurred modern office interior bathed in natural daylight, reflecting an airy and structured visual style."
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD97r-Os8fj3Hc6-L2FQobiOQnM6_jYsiM94hedhSwcAm-olh_DKh6JjUIwDNFODQjTncueCxoP6NFbatWP5t661eWZ4M8uuG_yqPslcuAIeXTGcYdwGTj93kjNJoaA2JR0n-bM6uCDHhi4renYBGBITnjT0fP-45H2OfyR3hxSYbxrlO1qaHh7Ef1_LALICpyIsEb7m6qEzHR-FPludQod43I6T81X_dYE01tkRXuDY02Y4oorTXDPeis59f8p2I9XKfrMKGhnIQM" />
+                                        <span class="font-title-md text-title-md text-on-surface">Siti Aminah</span>
+                                    </div>
+                                </td>
+                                <td class="py-md px-lg text-on-surface-variant">siti.aminah@system.edu</td>
+                                <td class="py-md px-lg">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-surface-variant text-on-surface font-medium border border-outline-variant">Counselor</span>
+                                </td>
+                                <td class="py-md px-lg">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-secondary-container text-on-secondary-container font-medium">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                        Aktif
+                                    </span>
+                                </td>
+                                <td class="py-md px-lg text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors"
+                                            title="Hapus">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-surface-container-low transition-colors group">
+                                <td class="py-md px-lg">
+                                    <div class="flex items-center gap-sm">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-title-md font-bold border border-outline-variant shadow-sm">
+                                            AW</div>
+                                        <span class="font-title-md text-title-md text-on-surface">Andi Wijaya</span>
+                                    </div>
+                                </td>
+                                <td class="py-md px-lg text-on-surface-variant">andi.w@system.edu</td>
+                                <td class="py-md px-lg">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-surface-variant text-on-surface font-medium border border-outline-variant">Counselor</span>
+                                </td>
+                                <td class="py-md px-lg">
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-error-container text-on-error-container font-medium">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                        Non-aktif
+                                    </span>
+                                </td>
+                                <td class="py-md px-lg text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-1.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container rounded transition-colors"
+                                            title="Hapus">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination Footer -->
+                <div
+                    class="p-md border-t border-outline-variant bg-surface-bright flex justify-between items-center text-on-surface-variant font-body-md text-body-md">
+                    <div>Menampilkan 1-3 dari 3 pengguna</div>
+                    <div class="flex gap-xs">
+                        <button
+                            class="p-sm rounded border border-outline-variant hover:bg-surface-container-low disabled:opacity-50"
+                            disabled="">
+                            <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                        </button>
+                        <button
+                            class="p-sm rounded border border-outline-variant hover:bg-surface-container-low disabled:opacity-50"
+                            disabled="">
+                            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Shared Component: Footer -->
+        <footer
+            class="bg-transparent border-t border-outline-variant w-full py-lg flex flex-col md:flex-row justify-between items-center px-lg mt-auto">
+            <p class="font-label-md text-label-md text-outline mb-sm md:mb-0">© 2024 MajorRecommend System.
+                Institutional Trust Dashboard.</p>
+            <div class="flex gap-lg">
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Documentation</a>
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Support</a>
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

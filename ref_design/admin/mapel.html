@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Manajemen Mata Pelajaran - MajorRecommend Admin</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#006c49",
+                        "on-secondary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-fixed": "#0f0069",
+                        "outline": "#777587",
+                        "primary": "#3525cd",
+                        "on-primary-container": "#dad7ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-container": "#6cf8bb",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#ffd4a4",
+                        "surface-tint": "#4d44e3",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#e2dfff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-surface": "#213145",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary": "#684000",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-surface-variant": "#464555",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#885500",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "primary-container": "#4f46e5",
+                        "surface": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "xs": "0.25rem",
+                        "2xl": "3rem",
+                        "margin-mobile": "1rem",
+                        "base": "4px",
+                        "md": "1rem",
+                        "margin-desktop": "2.5rem",
+                        "sm": "0.5rem",
+                        "gutter": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "title-md": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen flex">
+    <!-- SideNavBar -->
+    <aside
+        class="w-[280px] h-screen fixed left-0 top-0 bg-surface-container-lowest shadow-sm flex flex-col py-md overflow-y-auto z-20 border-r border-outline-variant">
+        <div class="px-lg pb-md mb-md border-b border-outline-variant flex items-center gap-3">
+            <div
+                class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-title-lg">
+                M
+            </div>
+            <div>
+                <h1 class="font-title-lg text-title-lg font-bold text-primary">MajorRecommend</h1>
+                <p class="font-label-md text-label-md text-on-surface-variant">Admin Console</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-sm space-y-1">
+            <!-- Dashboard -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <span class="font-title-md text-title-md">Dashboard</span>
+            </a>
+            <!-- Jurusan Kuliah -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">school</span>
+                <span class="font-title-md text-title-md">Jurusan Kuliah</span>
+            </a>
+            <!-- Kriteria Minat & Bakat -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">psychology</span>
+                <span class="font-title-md text-title-md">Kriteria Minat &amp; Bakat</span>
+            </a>
+            <!-- Pertanyaan Kuesioner -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">quiz</span>
+                <span class="font-title-md text-title-md">Pertanyaan Kuesioner</span>
+            </a>
+            <!-- Mata Pelajaran (ACTIVE) -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container-low text-primary font-bold border-r-4 border-primary cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]"
+                    style="font-variation-settings: 'FILL' 1;">book</span>
+                <span class="font-title-md text-title-md">Mata Pelajaran</span>
+            </a>
+            <!-- Data Siswa -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">group</span>
+                <span class="font-title-md text-title-md">Data Siswa</span>
+            </a>
+            <!-- Dataset Training -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">database</span>
+                <span class="font-title-md text-title-md">Dataset Training</span>
+            </a>
+            <!-- Training Model -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">model_training</span>
+                <span class="font-title-md text-title-md">Training Model</span>
+            </a>
+            <!-- Model ML -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+                <span class="font-title-md text-title-md">Model ML</span>
+            </a>
+            <!-- Log Training -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">history_edu</span>
+                <span class="font-title-md text-title-md">Log Training</span>
+            </a>
+            <!-- Hasil Rekomendasi -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">rule</span>
+                <span class="font-title-md text-title-md">Hasil Rekomendasi</span>
+            </a>
+            <!-- Laporan -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">assessment</span>
+                <span class="font-title-md text-title-md">Laporan</span>
+            </a>
+            <!-- Manajemen Admin -->
+            <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors cursor-pointer active:scale-[0.98]"
+                href="#">
+                <span class="material-symbols-outlined text-[20px]">admin_panel_settings</span>
+                <span class="font-title-md text-title-md">Manajemen Admin</span>
+            </a>
+        </nav>
+    </aside>
+    <!-- Main Wrapper -->
+    <div class="flex-1 ml-[280px] flex flex-col min-h-screen">
+        <!-- TopNavBar -->
+        <header
+            class="fixed top-0 right-0 w-[calc(100%-280px)] h-16 bg-surface-container-lowest border-b border-outline-variant z-10 flex justify-between items-center px-lg">
+            <div class="flex items-center">
+                <h2 class="font-title-lg text-title-lg font-bold text-primary">MajorRecommend Admin</h2>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all duration-200">
+                    <span class="material-symbols-outlined">notifications</span>
+                </button>
+                <button
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-all duration-200">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+                <div
+                    class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant ml-2">
+                    <img alt="Admin Profile" class="w-full h-full object-cover"
+                        data-alt="A professional headshot of an administrator in a well-lit modern office setting. The lighting is bright and clear, emphasizing a clean, light-mode aesthetic. The individual is wearing smart casual corporate attire, conveying institutional trust and competence. The background features softly blurred architectural elements in light gray and subtle indigo tones."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaLEa5t1IE2vuohZR9Hw9ZzrHaayMmB1BQbCxhjOl2yfie-DlDZNzF0q3rZn4awYlRMDd-OzAOMflRdbPO-gGhLaDrsGA3k8S7jL25PYFudi4o3dNKklAWPfiDlwlyvapXay5_JMw6nZNLkfTCHgkzcie4OAWzb3pT_J1U0PoybVmCPLGSSRBwJi8Gg0IfuMTDJRL3xICXTWjrQUxpFOghw4fdmo_eRoS3fQ5RspSFB2HgYVIgq8U2BNQp07pigpLh5d-bsLrqyVE" />
+                </div>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-1 mt-16 p-8 lg:p-12 overflow-x-hidden">
+            <!-- Page Header -->
+            <div class="mb-8">
+                <h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Manajemen Mata Pelajaran</h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Kelola daftar mata pelajaran yang menjadi
+                    indikator nilai akademik.</p>
+            </div>
+            <!-- Action Toolbar -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                <!-- Search -->
+                <div class="relative w-full max-w-md">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="material-symbols-outlined text-outline">search</span>
+                    </div>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:ring-2 focus:ring-primary focus:border-primary transition-shadow placeholder-outline"
+                        placeholder="Cari kode atau nama mapel..." type="text" />
+                </div>
+                <!-- Add Button -->
+                <button
+                    class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container shadow-sm transition-colors shrink-0">
+                    <span class="material-symbols-outlined text-[18px]">add</span>
+                    Tambah Mata Pelajaran
+                </button>
+            </div>
+            <!-- Data Table Card -->
+            <div
+                class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-surface-container-lowest border-b border-outline-variant">
+                                <th
+                                    class="py-4 px-6 font-label-md text-label-md uppercase text-outline tracking-wider w-16">
+                                    No</th>
+                                <th class="py-4 px-6 font-label-md text-label-md uppercase text-outline tracking-wider">
+                                    Kode Mapel</th>
+                                <th class="py-4 px-6 font-label-md text-label-md uppercase text-outline tracking-wider">
+                                    Nama Mata Pelajaran</th>
+                                <th class="py-4 px-6 font-label-md text-label-md uppercase text-outline tracking-wider">
+                                    Kelompok</th>
+                                <th
+                                    class="py-4 px-6 font-label-md text-label-md uppercase text-outline tracking-wider text-right">
+                                    Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-surface-bright transition-colors group">
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface-variant">1</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface font-medium">MP-MAT</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface">Matematika</td>
+                                <td class="py-4 px-6">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant border border-outline-variant">
+                                        Wajib
+                                    </span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-error hover:bg-error-container rounded-lg transition-colors"
+                                            title="Delete">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-surface-bright transition-colors group">
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface-variant">2</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface font-medium">MP-FIS</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface">Fisika</td>
+                                <td class="py-4 px-6">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container text-on-secondary-container border border-secondary-fixed">
+                                        Peminatan
+                                    </span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-error hover:bg-error-container rounded-lg transition-colors"
+                                            title="Delete">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-surface-bright transition-colors group">
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface-variant">3</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface font-medium">MP-BHS</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface">Bahasa Indonesia</td>
+                                <td class="py-4 px-6">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant border border-outline-variant">
+                                        Wajib
+                                    </span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-error hover:bg-error-container rounded-lg transition-colors"
+                                            title="Delete">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-surface-bright transition-colors group">
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface-variant">4</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface font-medium">MP-BIO</td>
+                                <td class="py-4 px-6 font-body-md text-body-md text-on-surface">Biologi</td>
+                                <td class="py-4 px-6">
+                                    <span
+                                        class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-secondary-container text-on-secondary-container border border-secondary-fixed">
+                                        Peminatan
+                                    </span>
+                                </td>
+                                <td class="py-4 px-6 text-right">
+                                    <div
+                                        class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            class="p-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors"
+                                            title="Edit">
+                                            <span class="material-symbols-outlined text-[20px]">edit</span>
+                                        </button>
+                                        <button
+                                            class="p-2 text-error hover:bg-error-container rounded-lg transition-colors"
+                                            title="Delete">
+                                            <span class="material-symbols-outlined text-[20px]">delete</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Pagination / Footer of table -->
+                <div
+                    class="px-6 py-4 border-t border-outline-variant bg-surface-container-lowest flex items-center justify-between">
+                    <span class="font-body-md text-body-md text-on-surface-variant">Menampilkan 1-4 dari 24 mata
+                        pelajaran</span>
+                    <div class="flex gap-1">
+                        <button
+                            class="w-8 h-8 rounded flex items-center justify-center text-outline hover:bg-surface-container-low transition-colors disabled:opacity-50"
+                            disabled="">
+                            <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md">
+                            1
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md">
+                            2
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md">
+                            3
+                        </button>
+                        <button
+                            class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer
+            class="w-full py-lg border-t border-outline-variant flex justify-between items-center px-lg bg-transparent mt-auto">
+            <div class="font-label-md text-label-md text-outline">
+                © 2024 MajorRecommend System. Institutional Trust Dashboard.
+            </div>
+            <div class="flex gap-6">
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Documentation</a>
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Support</a>
+                <a class="font-label-md text-label-md text-outline hover:text-primary transition-colors"
+                    href="#">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

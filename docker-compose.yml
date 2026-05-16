@@ -1,0 +1,31 @@
+# File: docker-compose.yml
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: rekomendasi-jurusan-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: rekomendasi_jurusan
+    ports:
+      - "3306:3306"
+    volumes:
+      - rekomendasi_jurusan_mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: rekomendasi-jurusan-phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: secret
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+volumes:
+  rekomendasi_jurusan_mysql_data:

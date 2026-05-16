@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard - EduPath ML</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcd",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-secondary-container": "#00714d",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#6cf8bb",
+                        "primary-container": "#2563eb",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed": "#00174b",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-container": "#bc4800",
+                        "outline": "#737686",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface-container-highest": "#d3e4fe",
+                        "secondary": "#006c49",
+                        "inverse-primary": "#b4c5ff",
+                        "on-background": "#0b1c30",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "on-tertiary-container": "#ffede6",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#eeefff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary": "#943700",
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "primary": "#004ac6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434655"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "container-max-width": "1280px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "title-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "caption": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex">
+    <!-- SideNavBar (Desktop Shell) -->
+    <nav
+        class="hidden md:flex flex-col fixed left-0 top-0 h-full w-64 border-r border-outline-variant shadow-sm bg-surface-container-lowest z-50">
+        <!-- Header -->
+        <div class="p-6 border-b border-outline-variant">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+                </div>
+                <div>
+                    <h1 class="font-title-md text-title-md font-bold text-primary">EduPath ML</h1>
+                    <p class="font-caption text-caption text-on-surface-variant">Rekomendasi Jurusan</p>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Links -->
+        <div class="flex-1 overflow-y-auto py-4">
+            <!-- Dashboard (Active) -->
+            <a class="flex items-center gap-3 px-4 py-3 text-primary bg-primary-container/10 border-r-4 border-primary font-label-md text-label-md Active: scale-[0.98] transition-transform duration-200"
+                href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+            <!-- Profil Siswa (Inactive) -->
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors"
+                href="#">
+                <span class="material-symbols-outlined">person</span>
+                Profil Siswa
+            </a>
+            <!-- Tes Minat dan Bakat (Inactive) -->
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors"
+                href="#">
+                <span class="material-symbols-outlined">psychology</span>
+                Tes Minat dan Bakat
+            </a>
+            <!-- Hasil Rekomendasi (Inactive) -->
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors"
+                href="#">
+                <span class="material-symbols-outlined">military_tech</span>
+                Hasil Rekomendasi
+            </a>
+            <!-- Riwayat Tes (Inactive) -->
+            <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors"
+                href="#">
+                <span class="material-symbols-outlined">history</span>
+                Riwayat Tes
+            </a>
+        </div>
+        <!-- Footer / Logout -->
+        <div class="p-4 border-t border-outline-variant">
+            <a class="flex items-center gap-3 px-4 py-3 text-error font-label-md text-label-md hover:bg-error-container/50 rounded-lg transition-colors"
+                href="#">
+                <span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+        </div>
+    </nav>
+    <!-- Main Content Wrapper (Offsets Sidebar on Desktop) -->
+    <div class="flex-1 flex flex-col md:ml-64 w-full">
+        <!-- TopNavBar (Mobile Header & Desktop Top Bar) -->
+        <header
+            class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 sticky top-0 z-40 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant">
+            <!-- Mobile Brand (Hidden on Desktop since Sidebar has it) -->
+            <div class="md:hidden flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary"
+                    style="font-variation-settings: 'FILL' 1;">school</span>
+                <span class="font-headline-lg text-headline-lg-mobile font-bold text-primary">EduPath</span>
+            </div>
+            <!-- Spacer for Desktop to push trailing action to right -->
+            <div class="hidden md:block flex-1"></div>
+            <!-- Trailing Action -->
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden sm:block">
+                    <p class="font-label-md text-label-md text-on-surface">Nama Siswa</p>
+                    <p class="font-caption text-caption text-on-surface-variant">Siswa SMA</p>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden flex justify-center items-center">
+                    <span class="material-symbols-outlined text-on-surface-variant">person</span>
+                </div>
+                <!-- Mobile Menu Toggle -->
+                <button class="md:hidden text-on-surface-variant hover:text-primary transition-all">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </header>
+        <!-- Main Dashboard Content -->
+        <main
+            class="flex-1 p-margin-mobile md:p-margin-desktop max-w-container-max-width mx-auto w-full flex flex-col gap-8">
+            <!-- Welcome Section -->
+            <section class="flex flex-col gap-2">
+                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Selamat datang,
+                    <span class="text-primary">Nama Siswa</span></h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Mari persiapkan masa depan
+                    akademikmu. Ikuti tes minat dan bakat berbasis AI kami untuk menemukan jalur karir yang paling
+                    sesuai dengan potensimu.</p>
+            </section>
+            <!-- Progress Indicator -->
+            <section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+                <h3 class="font-title-md text-title-md text-on-surface mb-6">Progres Perjalanan Akademikmu</h3>
+                <div
+                    class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
+                    <!-- Step 1: Completed -->
+                    <div class="flex items-center gap-3 z-10 bg-surface-container-lowest pr-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md shadow-sm">
+                            <span class="material-symbols-outlined text-[18px]">check</span>
+                        </div>
+                        <span class="font-label-md text-label-md text-secondary font-bold">1. Lengkapi Profil</span>
+                    </div>
+                    <!-- Connecting Line 1 -->
+                    <div class="hidden sm:block flex-1 h-px bg-secondary mx-2"></div>
+                    <!-- Step 2: Active -->
+                    <div class="flex items-center gap-3 z-10 bg-surface-container-lowest px-4 sm:px-0">
+                        <div
+                            class="w-8 h-8 rounded-full border-2 border-primary bg-primary-container/10 text-primary flex items-center justify-center font-label-md text-label-md shadow-sm">
+                            2
+                        </div>
+                        <span class="font-label-md text-label-md text-primary font-bold">2. Ikuti Tes</span>
+                    </div>
+                    <!-- Connecting Line 2 -->
+                    <div class="hidden sm:block flex-1 h-px bg-outline-variant mx-2"></div>
+                    <!-- Step 3: Pending -->
+                    <div class="flex items-center gap-3 z-10 bg-surface-container-lowest pl-4 sm:pl-0">
+                        <div
+                            class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-label-md">
+                            3
+                        </div>
+                        <span class="font-label-md text-label-md text-on-surface-variant">3. Lihat Rekomendasi</span>
+                    </div>
+                    <!-- Mobile Connecting Line (Vertical fallback) -->
+                    <div class="absolute left-[15px] top-[32px] bottom-[32px] w-px bg-outline-variant sm:hidden z-0">
+                    </div>
+                </div>
+            </section>
+            <!-- Bento Grid Content -->
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+                <!-- Action Card: Status Tes -->
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col relative"
+                    data-alt="A subtle, modern geometric pattern in light blue and white tones, creating a clean and optimistic technological background suitable for a professional SaaS dashboard. The lighting is bright and evenly distributed."
+                    style="background-image: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(238,239,255,0.5) 100%);">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2 rounded-lg bg-error-container text-on-error-container">
+                                <span class="material-symbols-outlined">pending_actions</span>
+                            </div>
+                            <h3 class="font-title-md text-title-md text-on-surface">Status Tes Minat &amp; Bakat</h3>
+                        </div>
+                        <div class="mb-8">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md mb-3 border border-outline-variant">
+                                <span class="w-2 h-2 rounded-full bg-outline"></span>
+                                Belum Mengikuti Tes
+                            </span>
+                            <p class="font-body-md text-body-md text-on-surface-variant">
+                                Kami membutuhkan data dari tes minat dan bakat untuk memproses rekomendasi jurusan yang
+                                paling akurat menggunakan algoritma Machine Learning kami.
+                            </p>
+                        </div>
+                        <div class="mt-auto">
+                            <button
+                                class="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-primary-fixed-variant text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md transition-colors shadow-sm focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                                <span class="material-symbols-outlined">play_arrow</span>
+                                Mulai Tes Minat dan Bakat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Empty State Card: Hasil Rekomendasi -->
+                <div
+                    class="bg-surface-container border border-outline-variant rounded-xl p-6 flex flex-col justify-center items-center text-center shadow-sm min-h-[300px]">
+                    <div
+                        class="w-16 h-16 rounded-full bg-surface-variant text-primary flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-[32px]">manage_search</span>
+                    </div>
+                    <h3 class="font-title-md text-title-md text-on-surface mb-2">Hasil Rekomendasi Terakhir</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                        Belum ada hasil. Selesaikan tes minat dan bakat terlebih dahulu untuk melihat rekomendasi
+                        jurusan pertamamu.
+                    </p>
+                    <div class="mt-6 flex gap-2">
+                        <div class="w-16 h-2 bg-surface-variant rounded-full"></div>
+                        <div class="w-8 h-2 bg-surface-variant rounded-full"></div>
+                        <div class="w-12 h-2 bg-surface-variant rounded-full"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
